@@ -15,5 +15,5 @@ jobs:
     - stage: Hello-node-travis
       script:
       - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-      - docker build -t  $DOCKER_USERNAME/hellonode:travis;
+      - docker build -t $DOCKER_USERNAME/hellonode:travis .;
       - docker push $DOCKER_USERNAME/hellonode:travis;
