@@ -1,0 +1,19 @@
+sudo: required
+
+language: node
+
+services:
+  - docker
+
+branches:
+  only:
+  - master
+  
+  jobs:
+  include:
+    - stage: Hello-node-travis
+      script:
+      - 'if [ ${TRAVIS_BRANCH} = "master" ]; then
+            docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+            docker build -t  $DOCKER_USERNAME/hellonode:travis;
+            docker push $DOCKER_USERNAME/hellonode:travis;
